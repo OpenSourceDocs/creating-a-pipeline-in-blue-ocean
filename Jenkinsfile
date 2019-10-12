@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'npm install'
+        sh 'npm install --registry https://registry.npm.taobao.org info underscore '
       }
     }
     stage('test') {
@@ -18,6 +18,11 @@ pipeline {
       }
       steps {
         sh './jenkins/scripts/test.sh'
+      }
+    }
+    stage('ok') {
+      steps {
+        sh 'echo "OK!"'
       }
     }
   }
